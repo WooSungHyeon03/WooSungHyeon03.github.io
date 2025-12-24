@@ -2,17 +2,14 @@
 
 - type: github
   icon: "fab fa-github"
+  url: "https://github.com/WooSungHyeon03"
 
-- type: twitter
-  icon: "fa-brands fa-x-twitter"
 
 - type: email
   icon: "fas fa-envelope"
-  noblank: true # open link in current tab
+  url: "wshyun314@gmail.com"
 
-- type: rss
-  icon: "fas fa-rss"
-  noblank: true
+
 # Uncomment and complete the url below to enable more contact options
 #
 # - type: mastodon
