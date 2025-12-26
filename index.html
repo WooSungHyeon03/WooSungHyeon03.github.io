@@ -6,16 +6,24 @@ layout: default
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
+      <!-- Profile / Intro -->
       <div class="text-center mb-4">
-        <img src="{{ '/assets/img/apple-touch-icon.png' | relative_url }}" alt="Home Screen Picture" class="img-fluid rounded-circle" style="width: 150px; height: 150px; object-fit: cover;">
+        <img
+          src="{{ '/assets/img/apple-touch-icon.png' | relative_url }}"
+          alt="Home Screen Picture"
+          class="img-fluid rounded-circle"
+          style="width: 150px; height: 150px; object-fit: cover;"
+        >
         <h1 class="mt-3">Woo SungHyun</h1>
         <p class="text-muted">Computer Science and Engineering, Dong-A University</p>
-        <p class="mt-4">Hello<br>
-        I am an undergraduate student in the M4ML Lab at Dong-A University<br>
-        I study 3D Vision, especially 3D Reconstruction</p>
+        <p class="mt-4">
+          Hello<br>
+          I am an undergraduate student in the M4ML Lab at Dong-A University<br>
+          I study 3D Vision, especially 3D Reconstruction
+        </p>
       </div>
 
-
+      <!-- Education -->
       <section class="mb-5">
         <h2 class="mb-3" style="font-weight: bold;">Education</h2>
         <div class="card p-3 mb-4">
@@ -24,11 +32,14 @@ layout: default
         </div>
       </section>
 
+      <!-- Research Experience -->
       <section class="mb-5">
         <h2 class="mb-3" style="font-weight: bold;">Research Experience</h2>
         <div class="card p-3 mb-4">
           <h4 class="mb-1">Dong-A University – M4ML Lab</h4>
-          <p class="text-muted mb-1">Undergraduate Researcher, supervised by Professor Jeongil SEo</p>
+          <p class="text-muted mb-1">
+            Undergraduate Researcher, supervised by Professor Jeongil Seo
+          </p>
           <ul class="list-unstyled mb-1">
             <li>3D Vision with a focus on 3D Reconstruction</li>
           </ul>
@@ -36,21 +47,38 @@ layout: default
         </div>
       </section>
 
+      <!-- Publications -->
       <section class="mb-5">
         <h2 class="mb-3" style="font-weight: bold;">Publications</h2>
         {% assign publications = site.posts | where: "categories", "Publications" | sort: "date" | reverse %}
         {% for post in publications limit:1 %}
-          <div class="card p-3 mb-3 d-flex align-items-center flex-row">
-            {% if post.image %}
-              <img src="{{ post.image | relative_url }}" alt="Publication Image" class="img-fluid me-3" style="width: 250px; height: 150px; object-fit: cover; border-radius: 0;">
-            {% else %}
-              <img src="{{ '/assets/img/result.png' | relative_url }}" alt="Publication Image" class="img-fluid me-3" style="width: 250px; height: 150px; object-fit: cover; border-radius: 0;">
-            {% endif %}
-            <div>
-              <h4>{{ post.title }}</h4>
-              <p class="text-muted mb-1">{{ post.authors }}</p>
-              <p class="text-muted mb-1">{{ post.venue }}</p>
-              <p class="text-muted">{% include datetime.html date=post.date lang=lang %}</p>
+          <div class="card p-3 mb-3">
+            <div class="row g-3 align-items-center">
+              <div class="col-12 col-md-4 text-center text-md-start">
+                {% if post.image %}
+                  <img
+                    src="{{ post.image | relative_url }}"
+                    alt="Publication Image"
+                    class="img-fluid"
+                    style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                  >
+                {% else %}
+                  <img
+                    src="{{ '/assets/img/result.png' | relative_url }}"
+                    alt="Publication Image"
+                    class="img-fluid"
+                    style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                  >
+                {% endif %}
+              </div>
+              <div class="col-12 col-md-8">
+                <h4>{{ post.title }}</h4>
+                <p class="text-muted mb-1">{{ post.authors }}</p>
+                <p class="text-muted mb-1">{{ post.venue }}</p>
+                <p class="text-muted">
+                  {% include datetime.html date=post.date lang=lang %}
+                </p>
+              </div>
             </div>
           </div>
         {% endfor %}
