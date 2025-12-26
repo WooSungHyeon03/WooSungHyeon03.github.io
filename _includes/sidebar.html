@@ -56,9 +56,9 @@
           <i class="fa-fw fas fa-file-alt"></i>
           <span>PAPER REVIEW</span>
         </a>
-        <ul class="nav flex-column ms-3">
-          <li class="nav-item"><a href="{{ '/categories/computer-vision/' | relative_url }}" class="nav-link">Computer Vision</a></li>
-          <li class="nav-item"><a href="{{ '/categories/3d-vision/' | relative_url }}" class="nav-link">3D Vision</a></li>
+        <ul class="nav flex-column nested-category-list">
+          <li class="nav-item"><a href="{{ '/categories/computer-vision/' | relative_url }}" class="nav-link">- Computer Vision</a></li>
+          <li class="nav-item"><a href="{{ '/categories/3d-vision/' | relative_url }}" class="nav-link">- 3D Vision</a></li>
         </ul>
       </li>
 
@@ -187,7 +187,7 @@
       /* 사이드바 nested nav 간격 최소화 (International - Paper review / 3D Vision - Study 사이 간격 제거) */
       #sidebar .nav { margin: 0; padding: 0; }
       #sidebar .nav > .nav-item { margin-bottom: 0.15rem !important; } /* 전체 항목 간격 축소 */
-      #sidebar .nav .nav { margin-top: 0 !important; margin-bottom: 0 !important; padding-left: 0.6rem !important; }
+      #sidebar .nav .nav { margin-top: 0 !important; margin-bottom: 0 !important; padding-left: 0 !important; }
       #sidebar .nav .nav .nav-item { margin-bottom: 0 !important; } /* nested 항목 간격 없앰 */
 
       /* 홈 대제목 아래 얕은 선 숨김 */

@@ -100,3 +100,43 @@ hr.my-2 {
   margin-right: 0.5rem;
   margin-bottom: 0.5rem;
 }
+
+/* Custom sidebar styles for nested categories */
+#sidebar .nested-category-list {
+  padding-left: 0 !important; /* Remove padding from the nested ul */
+  margin-left: 0 !important; /* Ensure no left margin */
+}
+
+#sidebar .nested-category-list .nav-item {
+  padding-left: 0 !important; /* Remove padding from the nested li */
+  margin-left: 0 !important; /* Ensure no left margin */
+}
+
+#sidebar .nested-category-list .nav-item .nav-link {
+  padding-left: 25px !important; /* Remove padding from the nested links */
+  text-align: left !important; /* Force left alignment */
+}
+
+/* Adjust spacing for home screen cards */
+.card.p-3.mb-4 {
+  padding: 1.25rem !important; /* Set padding to 0 */
+  margin-bottom: 1.25rem !important; /* Adjust margin-bottom */
+}
+
+.card.p-3.mb-4 h4.mb-1 {
+  margin-bottom: 1rem !important; /* Set margin for h4 to 0 */
+  margin-top: 1rem !important; /* Ensure no top margin for h4 */
+}
+
+.card.p-3.mb-4 p.text-muted {
+  margin-bottom: 0 !important; /* Set margin for p elements within the card to 0 */
+  margin-top: 0 !important; /* Ensure no top margin for p */
+}
+
+.card.p-3.mb-4 ul.list-unstyled {
+  margin-bottom: 0 !important; /* Set margin for ul to 0 */
+  margin-top: 0 !important; /* Ensure no top margin for ul */
+}
+
+
+
