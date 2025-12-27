@@ -26,20 +26,20 @@ layout: page
                       src="{{ post.image | relative_url }}"
                       alt="Publication Image"
                       class="img-fluid"
-                      style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                      style=""
                     >
                   {% else %}
                     <img
                       src="{{ '/assets/img/result.png' | relative_url }}"
                       alt="Publication Image"
                       class="img-fluid"
-                      style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                      style=""
                     >
                   {% endif %}
                 </div>
 
                 <!-- 텍스트 영역 -->
-                <div class="col-12 col-md-8 ps-md-3">
+                <div class="col-12 col-md-8 ps-md-4 mt-2 mt-md-0">
                   <h4 class="mb-1">
                     {{ post.title }}
                   </h4>
