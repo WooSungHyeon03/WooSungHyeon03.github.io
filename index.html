@@ -3,6 +3,34 @@ layout: default
 # Index page
 ---
 
+<!-- Custom styles for this page -->
+<style>
+  /* Profile image styling */
+  .profile-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+
+  /* Bold section headings */
+  .section-title {
+    font-weight: bold;
+  }
+
+  /* Publication images styling */
+  .publication-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 0;
+  }
+
+  /* Spacing for intro paragraphs */
+  .profile-intro p {
+    margin-bottom: 0.5rem;
+  }
+</style>
+
 <div class="container mt-5">
   <div class="row justify-content-center">
     <div class="col-lg-10">
@@ -10,46 +38,45 @@ layout: default
       <div class="text-center mb-4">
         <img
           src="{{ '/assets/img/apple-touch-icon.png' | relative_url }}"
-          alt="Home Screen Picture"
-          class="img-fluid rounded-circle"
-          style="width: 150px; height: 150px; object-fit: cover;"
+          alt="Woo SungHyeon profile picture"
+          class="img-fluid rounded-circle profile-image"
         >
-        <h1 class="mt-3">Woo SungHyeon</h1>
-        <p class="text-muted">Computer Science and Engineering, Dong-A University</p>
-        <p class="mt-4">
-          Hello<br>
-          I am an undergraduate student in the M4ML Lab at Dong-A University<br>
-          I study 3D Vision, especially 3D Reconstruction
-        </p>
+        <h1 class="mt-3">Woo SungHyeon</h1>
+        <p class="text-muted">Computer Science and Engineering, Dong‑A University</p>
+        <div class="mt-4 profile-intro">
+          <p>Hello.</p>
+          <p>I am an undergraduate student in the M4ML Lab at Dong‑A University.</p>
+          <p>I study 3D Vision, especially 3D Reconstruction.</p>
+        </div>
       </div>
 
       <!-- Education -->
       <section class="mb-5">
-        <h2 class="mb-3" style="font-weight: bold;">Education</h2>
+        <h2 class="section-title mb-3">Education</h2>
         <div class="card p-3 mb-4">
-          <h4 class="mb-1">Dong-A University, B.S. in Computer Science and Engineering</h4>
-          <p class="text-muted mb-0">Mar. 2022 – Present</p>
+          <h4 class="mb-1">Dong‑A University, B.S. in Computer Science and Engineering</h4>
+          <p class="text-muted mb-0">Mar. 2022 – Present</p>
         </div>
       </section>
 
       <!-- Research Experience -->
       <section class="mb-5">
-        <h2 class="mb-3" style="font-weight: bold;">Research Experience</h2>
+        <h2 class="section-title mb-3">Research Experience</h2>
         <div class="card p-3 mb-4">
-          <h4 class="mb-1">Dong-A University – M4ML Lab</h4>
+          <h4 class="mb-1">Dong‑A University – M4ML Lab</h4>
           <p class="text-muted mb-1">
-            Undergraduate Researcher, supervised by Professor Jeongil Seo
+            Undergraduate Researcher, supervised by Professor Jeongil Seo
           </p>
           <ul class="list-unstyled mb-1">
-            <li>3D Vision with a focus on 3D Reconstruction</li>
+            <li>3D Vision with a focus on 3D Reconstruction</li>
           </ul>
-          <p class="text-muted mb-0">Period: 2025. 04 ~ current</p>
+          <p class="text-muted mb-0">Period: 2025. 04 ~ current</p>
         </div>
       </section>
 
       <!-- Publications -->
       <section class="mb-5">
-        <h2 class="mb-3" style="font-weight: bold;">Publications</h2>
+        <h2 class="section-title mb-3">Publications</h2>
         {% assign publications = site.posts | where: "categories", "Publications" | sort: "date" | reverse %}
         {% for post in publications limit:1 %}
           <div class="card p-3 mb-3">
@@ -58,16 +85,16 @@ layout: default
                 {% if post.image %}
                   <img
                     src="{{ post.image | relative_url }}"
-                    alt="Publication Image"
-                    class="img-fluid"
-                    style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                    alt="{{ post.title }}"
+                    class="img-fluid publication-image"
+                    loading="lazy"
                   >
                 {% else %}
                   <img
                     src="{{ '/assets/img/result.png' | relative_url }}"
-                    alt="Publication Image"
-                    class="img-fluid"
-                    style="width: 100%; max-height: 180px; object-fit: cover; border-radius: 0;"
+                    alt="{{ post.title }}"
+                    class="img-fluid publication-image"
+                    loading="lazy"
                   >
                 {% endif %}
               </div>
