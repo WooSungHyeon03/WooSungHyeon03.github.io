@@ -1,0 +1,84 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as mx;
+
+.post-navigation {
+  margin-top: 3rem; /* Add some space above the navigation */
+  margin-bottom: 3rem; /* Add some space below the navigation */
+
+  .btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1rem 1.5rem; /* Increase padding for a larger touch area */
+    border-width: 2px; /* Make border slightly thicker */
+    border-color: var(--btn-border-color); /* Use theme variable for consistency */
+    border-radius: v.$radius-lg; /* Keep large border radius */
+    transition: all 0.3s ease-in-out; /* Smooth transitions */
+    min-height: 6rem; /* Ensure a minimum height for better appearance */
+
+    &:hover {
+      background-color: var(--btn-hover-bg); /* Subtle background on hover */
+      border-color: var(--btn-hover-border-color);
+      color: var(--btn-hover-color);
+      transform: translateY(-3px); /* Slight lift effect */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+
+      &::before {
+        color: var(--btn-hover-color); /* Change label color on hover */
+      }
+
+      p {
+        color: var(--btn-hover-color); /* Change title color on hover */
+      }
+    }
+
+    &.disabled {
+      opacity: 0.6; /* Slightly reduce opacity for disabled state */
+      cursor: not-allowed;
+      background: none;
+      color: var(--text-muted-color);
+      transform: none; /* Remove lift effect for disabled */
+      box-shadow: none; /* Remove shadow for disabled */
+
+      &::before {
+        color: var(--text-muted-color);
+      }
+
+      p {
+        color: var(--text-muted-color);
+      }
+    }
+
+    &::before {
+      font-size: 0.8rem; /* Smaller font for "Previous/Next" label */
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 0.25rem; /* Space between label and title */
+      color: var(--text-muted-color);
+      transition: color 0.3s ease-in-out;
+    }
+
+    p {
+      font-size: 1.2rem; /* Larger font for post title */
+      font-weight: 600; /* Bolder title */
+      line-height: 1.4;
+      margin-top: 0;
+      margin-bottom: 0;
+      white-space: normal;
+      color: var(--link-color); /* Use link color for titles */
+      transition: color 0.3s ease-in-out;
+    }
+
+    &:first-child {
+      border-radius: v.$radius-lg; /* Apply radius to all corners */
+      margin-right: 0.5rem; /* Space between buttons */
+    }
+
+    &:last-child {
+      border-radius: v.$radius-lg; /* Apply radius to all corners */
+      margin-left: 0.5rem; /* Space between buttons */
+    }
+  }
+}
