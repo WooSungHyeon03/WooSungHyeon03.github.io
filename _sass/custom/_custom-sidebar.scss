@@ -49,8 +49,8 @@ hr.my-2 {
 }
 
 .publication-item, .award-item, #page-category .card {
-  margin-bottom: 1.5rem;
-  padding: 1rem;
+  margin-bottom: 0.75rem !important;
+  padding: 1.25rem !important;
   border: 1px solid #dee2e6 !important;
   border-radius: 0 !important;
   background-color: #fff;
@@ -138,4 +138,37 @@ hr.my-2 {
 .card.p-3.mb-4 ul.list-unstyled {
   margin-bottom: 0.25rem !important;
   margin-top: 0.25rem !important;
+}
+
+/* Mode Toggle Styling */
+#mode-toggle {
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--sidebar-btn-color);
+  transition: color 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin-bottom: 0.5rem;
+  margin-left: 0.8rem !important; /* Space from email icon */
+
+  &:hover {
+    color: var(--sidebar-active-color);
+  }
+
+  i {
+    font-size: 1.1rem;
+  }
+}
+
+/* Dark mode icon switch */
+html[data-mode='dark'] #mode-toggle i::before {
+  content: "\f186"; /* fa-moon */
+}
+
+html[data-mode='light'] #mode-toggle i::before {
+  content: "\f185"; /* fa-sun */
 }

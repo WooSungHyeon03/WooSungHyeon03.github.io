@@ -24,7 +24,16 @@ layout: compress
 
         <div class="row flex-grow-1">
           <!-- Main: full width -->
-          <main aria-label="Main Content" class="col-12 px-md-4">
+          {% assign show_panel = false %}
+          {% if layout.panel_includes.size > 0 %}
+            {% assign show_panel = true %}
+          {% endif %}
+
+          {% if page.layout == 'home' or page.layout == 'category' or page.layout == 'tag' %}
+            {% assign show_panel = false %}
+          {% endif %}
+
+          <main aria-label="Main Content" class="col-12 {% if show_panel %}col-lg-9 col-xl-9{% endif %} px-md-4">
             {% if layout.layout == 'default' %}
               {% include refactor-content.html content=content lang=lang %}
             {% else %}
@@ -32,7 +41,17 @@ layout: compress
             {% endif %}
           </main>
 
-          <!-- Panel removed -->
+          {% if show_panel %}
+            <!-- The Panel -->
+            <aside id="panel-wrapper" class="col-xl-3 ps-2 text-muted">
+              <div class="access">
+                {% for _include in layout.panel_includes %}
+                  {% assign _include_path = _include | append: '.html' %}
+                  {% include {{ _include_path }} lang=lang %}
+                {% endfor %}
+              </div>
+            </aside>
+          {% endif %}
         </div>
 
         <div class="row">

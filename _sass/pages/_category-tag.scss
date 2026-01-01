@@ -13,6 +13,14 @@
     line-height: 1.5rem;
     padding: 0.6rem 0;
 
+    &.list-unstyled {
+      padding: 0;
+
+      &::before {
+        display: none;
+      }
+    }
+
     /* dot */
     &::before {
       background: #999999;
