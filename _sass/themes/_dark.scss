@@ -93,6 +93,10 @@
   --categories-hover-bg: rgb(73 75 76);
   --categories-icon-hover-color: white;
 
+  .categories i {
+    color: var(--text-muted-color);
+  }
+
   /* Archive */
   --timeline-node-bg: rgb(150 152 156);
   --timeline-color: rgb(63 65 68);
@@ -112,7 +116,11 @@
   --filepath-text-color: #cacaca;
 
   .light {
-    display: none;
+    display: none !important;
+  }
+
+  .dark {
+    display: inline-block !important;
   }
 
   /* Categories */

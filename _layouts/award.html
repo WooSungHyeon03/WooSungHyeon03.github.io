@@ -18,7 +18,7 @@ layout: default
           <p class="award-organization">{{ page.organization }}</p>
           <p class="award-date">{{ page.date | date: "%B %Y" }}</p>
           {% if page.image %}
-            <img src="{{ page.image | relative_url }}" alt="Award Image" class="img-fluid mb-3">
+            <img src="{{ page.image | relative_url }}" alt="Award Image" class="img-fluid mb-3" loading="lazy">
           {% endif %}
           {% if page.description %}
             <h3>Description</h3>

@@ -22,7 +22,7 @@ layout: default
             <p class="publication-link"><a href="{{ page.paper }}" target="_blank" rel="noopener noreferrer">[Paper]</a></p>
           {% endif %}
           {% if page.image %}
-            <img src="{{ page.image | relative_url }}" alt="Publication Image" class="img-fluid mb-3">
+            <img src="{{ page.image | relative_url }}" alt="Publication Image" class="img-fluid mb-3" loading="lazy">
           {% endif %}
           {% if page.abstract %}
             <h3>Abstract</h3>

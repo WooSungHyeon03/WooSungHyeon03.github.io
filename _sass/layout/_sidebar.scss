@@ -249,25 +249,12 @@ $sidebar-display: 'sidebar-display'; /* the attribute for sidebar display */
       border: none;
 
       i {
-        &.dark {
-          display: none;
-        }
-
-        &.light {
-          display: inline-block;
-        }
+        color: var(--sidebar-btn-color);
+        font-size: 1.1rem;
       }
 
-      [data-mode='dark'] & {
-        i {
-          &.dark {
-            display: inline-block;
-          }
-
-          &.light {
-            display: none;
-          }
-        }
+      &:hover i {
+        color: var(--sidebar-active-color);
       }
     }
 

@@ -111,7 +111,11 @@
   }
 
   .dark {
-    display: none;
+    display: none !important;
+  }
+
+  .light {
+    display: inline-block !important;
   }
 
   /* --- Syntax highlight theme from `rougify style github` --- */
