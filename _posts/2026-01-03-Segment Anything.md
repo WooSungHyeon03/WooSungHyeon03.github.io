@@ -13,7 +13,7 @@ Author: [Alexander Kirillov](https://arxiv.org/search/cs?searchtype=author&query
 방대한 데이터셋으로 훈련된 LLM, foundation model은 새로운 task가 주어지더라도  정교한 프롬프트 엔지니어링을 통해 zero-shot에서도 범용적인 성능을 내고 있습니다.<br>
 그리고 foundation model을 task에 맞게 fine-tuning 했을때 더 좋은 성능을 낼 수 있습니다.<br>
 하지만 현재 컴퓨터 비전의 대부분의 문제들중 대다수는 방대한 훈련 데이터셋이 존재하지 않습니다.<br>
-그래서 해당 논문은 image segmentation을 위한 foundation model을 구축하는 것을 목표입니다.<br>
+그래서 해당 논문은 image segmentation을 위한 foundation model을 구축하는 것을 목표로 합니다.<br>
 SAM은 promptable하면서 방대한 데이터셋으로 훈련시켜 generalization한 model을 구축합니다.<br>
 해당 모델을 구축하기 위해 세가지를 제시합니다.<br>
 1. What **task** will enable zero-shot generalization?
@@ -27,7 +27,7 @@ SAM은 promptable하면서 방대한 데이터셋으로 훈련시켜 generalizat
 
 **task**<br>
 프롬프트가 모호하여 여러 객체를 지칭할 수 있는 경우에도  출력은 해당 객체 중 적어도 하나에 대한 합리적인 mask여야 함을 의미합니다.<br>
-예를 들어 셔츠 라는 프롬프트를 입력했다면 셔츠 자체를 나타낼 수도 있고 그것을 입고 있는 사람을 나타낼 수도 있음<br>
+(예를 들어 셔츠 라는 프롬프트를 입력했다면 셔츠 자체를 나타낼 수도 있고 그것을 입고 있는 사람을 나타낼 수도 있음)<br>
 
 ![Figure 3](./assets/img/Paper-Review/Segment-Anything/Figure3.png)
 <br>
@@ -37,7 +37,7 @@ SAM은 promptable하면서 방대한 데이터셋으로 훈련시켜 generalizat
 image encoder가 image embedding을 계산<br>
 prompt encoder가 prompt embedding을 계산<br>
 이후 두 information sources가 lightweight mask decoder에서 결합하여 segmentation mask를 예측합니다. <br>
-SAM이 이렇게 encoder와 decoder를 분리함으로써 동일한 image embedding은 다른 prompts와 함께 재사용되어 비용 부담이 분산됩니다<br>
+SAM은 이렇게 encoder와 decoder를 분리함으로써 동일한 image embedding은 다른 prompts와 함께 재사용되어 비용 부담이 분산됩니다<br>
 
 
 ![Figure 4](./assets/img/Paper-Review/Segment-Anything/Figure4.png)
