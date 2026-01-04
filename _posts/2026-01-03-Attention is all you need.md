@@ -84,8 +84,10 @@ input은 d<sub>k</sub>차원의 query,key 그리고 d<sub>v</sub>차원의 value
 그 가중치를 values와 dot product를 수행합니다. 수식은 아래와 같습니다.
 
 $$
-\operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
+\text{Attention}(Q, K, V)
+= \text{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 $$
+
 
 여기서  굳이  $\sqrt{d_{k}}$를 나누는 이유는 d<sub>k</sub>값이 커지면 $QK^{\top}$가 너무 커지거나 작아져서 softmax의 기울기가 0에 가까운 vanishing gradient 문제가 발생하기 때문에 값을 낮추기 위해서 나눠줍니다. 아래는 softmax 함수입니다.
 
@@ -100,11 +102,15 @@ d<sub>model</sub>만큼 한번에 연산을 하는 대신에 h로 d<sub>model</s
 그리고 해당 output들을 concat하는 방식으로 이루어져 있습니다.
 
 $$
-\begin{align*}
-\operatorname{MultiHead}(Q, K, V) &= \operatorname{Concat}(\text{head}_1, \dots, \text{head}_h) W^O \\
-\quad \text{where } \text{head}_i &= \operatorname{Attention}(QW_i^Q, KW_i^K, VW_i^V)
-\end{align*}
+\begin{aligned}
+\text{MultiHead}(Q, K, V)
+&= \text{Concat}(\text{head}_1, \dots, \text{head}_h)\, W^O \\
+\text{where }\;
+\text{head}_i
+&= \text{Attention}(QW_i^Q, KW_i^K, VW_i^V)
+\end{aligned}
 $$
+
 
 이렇게 query,key,value를 도출하기 위한 차원도 다음과 같이 맞췄습니다.
 
@@ -207,8 +213,15 @@ Self-Attention을 사용한 이유는 병렬화가 가능하여 computational co
 Adam Optimizer를  $\beta_1 = 0.9,\ \beta_2 = 0.98,\ \epsilon = 10^{-9}$ 로 사용 했으며 학습률은 다음 공식을 사용했습니다.
 
 $$
-lrate = d_{\text{model}}^{-0.5} \cdot \min(\text{step\_num}^{-0.5}, \text{step\_num} \cdot \text{warmup\_steps}^{-1.5})
+\text{lrate}
+= d_{\text{model}}^{-0.5}
+\cdot
+\min\left(
+\text{step}^{-0.5},
+\text{step} \cdot \text{warmup}^{-1.5}
+\right)
 $$
+
 
 warm up steps 동안 학습률을 선형적으로 증가시키고, 스탭 수의 역제곱근에 비례하여 감소 시켰으며 warm up steps = 4000을 사용했습니다.
 
