@@ -3,6 +3,7 @@ title: "[Paper Review] Attention Is All You Need"
 date: 2026-01-04 18:00:00 +0900
 categories: [Paper Review]
 tags: [Paper Review]
+math: true 
 ---
 
 Author: [Ashish Vaswani](https://arxiv.org/search/cs?searchtype=author&query=Vaswani,+A), [Noam Shazeer](https://arxiv.org/search/cs?searchtype=author&query=Shazeer,+N), [Niki Parmar](https://arxiv.org/search/cs?searchtype=author&query=Parmar,+N), [Jakob Uszkoreit](https://arxiv.org/search/cs?searchtype=author&query=Uszkoreit,+J), [Llion Jones](https://arxiv.org/search/cs?searchtype=author&query=Jones,+L), [Aidan N. Gomez](https://arxiv.org/search/cs?searchtype=author&query=Gomez,+A+N), [Lukasz Kaiser](https://arxiv.org/search/cs?searchtype=author&query=Kaiser,+L), [Illia Polosukhin](https://arxiv.org/search/cs?searchtype=author&query=Polosukhin,+I)
@@ -80,9 +81,11 @@ input은 d<sub>k</sub>차원의 query,key 그리고 d<sub>v</sub>차원의 value
 저희는 query를 모든 key들과 dot product수행하며   $\sqrt{d_{k}}$로 나눕니다. 그리고 softmax를 적용하여 values에 대한 가중치를 얻습니다.
 
 그 가중치를 values와 dot product를 수행합니다. 수식은 아래와 같습니다.
+
 $$
 \operatorname{Attention}(Q, K, V) = \operatorname{softmax}\left(\frac{QK^T}{\sqrt{d_k}}\right)V
 $$
+
 여기서  굳이  $\sqrt{d_{k}}$를 나누는 이유는 d<sub>k</sub>값이 커지면 $QK^{\top}$가 너무 커지거나 작아져서 softmax의 기울기가 0에 가까운 vanishing gradient 문제가 발생하기 때문에 값을 낮추기 위해서 나눠줍니다. 아래는 softmax 함수입니다.
 
 ![softmax](./assets/img/Paper-Review/Attention Is All You Need/softmax.webp)
@@ -94,19 +97,21 @@ $$
 d<sub>model</sub>만큼 한번에 연산을 하는 대신에 h로 d<sub>model</sub>를 나눠서 병렬적으로 Scaled Dot-Product를 진행 후 차원이 d<sub>v</sub>인 output들을 얻습니다.
 
 그리고 해당 output들을 concat하는 방식으로 이루어져 있습니다.
+
 $$
 \begin{align*}
 \operatorname{MultiHead}(Q, K, V) &= \operatorname{Concat}(\text{head}_1, \dots, \text{head}_h) W^O \\
 \quad \text{where } \text{head}_i &= \operatorname{Attention}(QW_i^Q, KW_i^K, VW_i^V)
 \end{align*}
 $$
+
 이렇게 query,key,value를 도출하기 위한 차원도 다음과 같이 맞췄습니다.
 
-$W_i^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}$,_
+$W_i^Q \in \mathbb{R}^{d_{\text{model}} \times d_k}$,
 
-_$W_i^K \in \mathbb{R}^{d_{\text{model}} \times d_k}$,
+$W_i^K \in \mathbb{R}^{d_{\text{model}} \times d_k}$,
 
-$W_i^V \in \mathbb{R}^{d_{\text{model}} \times d_v}$,_
+$W_i^V \in \mathbb{R}^{d_{\text{model}} \times d_v}$,
 
 $W^O \in \mathbb{R}^{h d_v \times d_{\text{model}}}$
 
@@ -129,9 +134,11 @@ decoder는 처음 embedding에서 self-attention을 수행할 수 있습니다. 
 #### 3.3 Position-wise Feed-Forward Networks
 
 Attention layer 이후에 fully connected feed-forward network를 통과합니다.
+
 $$
 \text{FFN}(x) = \max(0, xW_1 + b_1)W_2 + b_2
 $$
+
 구조가 MLP와 동일하며 activation function은 ReLU를 사용하였습니다. input 차원은 d<sub>model</sub>=512이며 중간 차원인 d<sub>ff</sub> = 2048으로 한번 펼쳤다가 다시 output은 d<sub>model</sub>=512으로 출력합니다.
 
 #### 3.4 Embeddings and Softmax
@@ -149,10 +156,15 @@ embedding layer에 $\sqrt{d_{model}}dmodel$을 곱해줍니다.
 #### 3.5 Positional Encoding
 
 각 token에 관계성과 위치 정보를 삽입하기 위해 임베딩과 동일한 차원인 d<sub>model</sub>=512 Positional Encoding을 더해줍니다.
+
 $$
-PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{\text{model}}}),
+PE_{(pos, 2i)} = \sin(pos/10000^{2i/d_{\text{model}}})
+$$
+
+$$
 PE_{(pos, 2i +1)} = \cos(pos/10000^{2i/d_{\text{model}}})
 $$
+
 파장은 2π부터 10000 · 2π까지 등비수열을 형성합니다.
 
 이 함수를 채택한 이유는 PE가 고정된 offset에 선형 함수로 표현될 수 있기 때문입니다.
@@ -192,9 +204,11 @@ Self-Attention을 사용한 이유는 병렬화가 가능하여 computational co
 #### 5.3 Optimizer
 
 Adam Optimizer를  $\beta_1 = 0.9,\ \beta_2 = 0.98,\ \epsilon = 10^{-9}$ 로 사용 했으며 학습률은 다음 공식을 사용했습니다.
+
 $$
 lrate = d_{\text{model}}^{-0.5} \cdot \min(\text{step\_num}^{-0.5}, \text{step\_num} \cdot \text{warmup\_steps}^{-1.5})
 $$
+
 warm up steps 동안 학습률을 선형적으로 증가시키고, 스탭 수의 역제곱근에 비례하여 감소 시켰으며 warm up steps = 4000을 사용했습니다.
 
 #### 5.4 Regularization
