@@ -243,7 +243,7 @@ Label Smoothing: 훈련 중 $\epsilon_{\mathrm{ls}} = 0.1$ 을 사용했습니�
 
 ![Table3](./assets/img/Paper-Review/Attention Is All You Need/Table3.webp)
 
-Table 1 (A)에서 볼 수 있듯이 Single Head Attention은 성능 하락으로 이어집니다.
+Table 3 (A)에서 볼 수 있듯이 Single Head Attention은 성능 하락으로 이어집니다.
 
 Table 3 (B)에서 볼 수 있듯이 d<sub>k</sub>를 줄이는 것은 성능 하락으로 이어집니다.
 
