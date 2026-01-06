@@ -5,9 +5,6 @@ title: Home
 ---
 
 {% assign show_intro = true %}
-{% if paginator and paginator.page > 1 %}
-  {% assign show_intro = false %}
-{% endif %}
 
 <!-- Custom styles for this page -->
 <style>
@@ -138,98 +135,6 @@ title: Home
           {% endfor %}
         </section>
       {% endif %}
-
-      <!-- Latest Posts -->
-      <section class="mb-5">
-        <h2 class="section-title mb-4">Latest Posts</h2>
-
-        {% assign all_pinned = site.posts | where: 'pin', 'true' %}
-        {% assign all_normal = site.posts | where_exp: 'item', 'item.pin != true and item.hidden != true' %}
-        {% assign posts = '' | split: '' %}
-
-        {% if paginator %}
-          {% assign visible_start = paginator.page | minus: 1 | times: paginator.per_page %}
-          {% assign visible_end = visible_start | plus: paginator.per_page %}
-          {% assign pinned_size = 0 %}
-
-          {% if all_pinned.size > visible_start %}
-            {% if all_pinned.size > visible_end %}
-              {% assign pinned_size = paginator.per_page %}
-            {% else %}
-              {% assign pinned_size = all_pinned.size | minus: visible_start %}
-            {% endif %}
-
-            {% for i in (visible_start..all_pinned.size) limit: pinned_size %}
-              {% assign posts = posts | push: all_pinned[i] %}
-            {% endfor %}
-          {% endif %}
-
-          {% assign normal_size = paginator.posts | size | minus: pinned_size %}
-
-          {% if normal_size > 0 %}
-            {% if pinned_size > 0 %}
-              {% assign normal_start = 0 %}
-            {% else %}
-              {% assign normal_start = visible_start | minus: all_pinned.size %}
-            {% endif %}
-
-            {% assign normal_end = normal_start | plus: normal_size | minus: 1 %}
-
-            {% for i in (normal_start..normal_end) %}
-              {% assign posts = posts | push: all_normal[i] %}
-            {% endfor %}
-          {% endif %}
-        {% else %}
-          {% assign posts = all_pinned | concat: all_normal %}
-        {% endif %}
-
-        {% if posts.size > 0 %}
-          <div id="post-list">
-            {% for post in posts %}
-              <article class="card mb-3">
-                <a href="{{ post.url | relative_url }}" class="text-decoration-none text-reset">
-                  <div class="card-body">
-                    <div class="d-flex flex-wrap align-items-center mb-2">
-                      <h4 class="mb-0 me-2">{{ post.title }}</h4>
-                      {% if post.pin %}
-                        <span class="badge bg-warning text-dark ms-1">PIN</span>
-                      {% endif %}
-                    </div>
-                    {% if post.description %}
-                      <p class="mb-2 text-muted small">{{ post.description }}</p>
-                    {% endif %}
-                    <div class="text-muted small d-flex align-items-center flex-wrap gap-3">
-                      <span><i class="far fa-calendar fa-fw me-1"></i>{% include datetime.html date=post.date lang=lang %}</span>
-                      {% if post.categories.size > 0 %}
-                        <span>
-                          <i class="far fa-folder-open fa-fw me-1"></i>
-                          {% for category in post.categories %}
-                            {{ category }}{% unless forloop.last %}, {% endunless %}
-                          {% endfor %}
-                        </span>
-                      {% endif %}
-                      {% if post.tags.size > 0 %}
-                        <span>
-                          <i class="fa fa-tags fa-fw me-1"></i>
-                          {% for tag in post.tags %}
-                            {{ tag }}{% unless forloop.last %}, {% endunless %}
-                          {% endfor %}
-                        </span>
-                      {% endif %}
-                    </div>
-                  </div>
-                </a>
-              </article>
-            {% endfor %}
-          </div>
-
-          {% if paginator and paginator.total_pages > 1 %}
-            {% include post-paginator.html %}
-          {% endif %}
-        {% else %}
-          <p class="text-muted">아직 게시된 글이 없습니다.</p>
-        {% endif %}
-      </section>
     </div>
   </div>
 </div>

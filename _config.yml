@@ -137,7 +137,9 @@ favicon:
   path: /assets/img/favicons
 
 paginate: 7
-paginate_path: "/page:num/"
+paginate: 
+# disable pagination on home (custom layout)
+# paginate_path: "/page:num/"
 
 # Publish future-dated posts (current content is dated ahead of today)
 future: true

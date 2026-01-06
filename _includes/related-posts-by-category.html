@@ -5,7 +5,7 @@
   {% if related_posts.size > 0 %}
     <div class="related-posts mt-5">
       <h4 class="mb-3">There are more posts waiting for you</h4>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-2">
+      <div class="row row-cols-4 g-3 flex-nowrap overflow-auto">
         {% for post in related_posts %}
           <div class="col">
             <div class="card h-100" style="background-color: var(--card-bg) !important;">
