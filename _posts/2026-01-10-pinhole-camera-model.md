@@ -47,7 +47,7 @@ camera center와 image plane 사이의 거리를 focal length(f)라 칭합니다
 
  ![Figure 10](/assets/img/Study/pinhole-camera-model/Figure10.webp)
 
-여기서 f_x와 f_y는 똑같은 값으로 하는 경우가 많기 때문에 굳이 표시를 하지 않는 경우가 많습니다.
+여기서 $$f_x$$와 $$f_y$$는 똑같은 값으로 하는 경우가 많기 때문에 굳이 표시를 하지 않는 경우가 많습니다.
 
 s가 skew라고 하며 x축과 y축이 정확히 수직이 아닐 경우를 조정하는 값이지만 대부분은 0으로 둡니다.
 
