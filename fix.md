@@ -1,13 +1,16 @@
 사이트 점검 및 수정 사항
 -----------------------
-- (해결) 모든 포스트가 2025~2026년 미래 날짜라 기본 설정(future: false)에서 목록에 노출되지 않음 → `_config.yml`에 `future: true`를 추가해 실제 포스트가 보이도록 수정.
-- (해결) 여러 논문 리뷰 글에서 이미지 경로를 `./assets/...`로 작성해 빌드 후 `/posts/.../assets/...`로 잘못 연결되던 문제 → 모든 경로를 `/assets/...`로 고쳐 홈 기준 절대 경로로 정상 표시되게 수정.
-- (해결) 메인 페이지 Award 섹션이 `where` 필터로 배열을 직접 비교해 매칭이 안 될 수 있었음 → `where_exp`로 변경해 `categories`에 `Award`가 포함된 글이 제대로 노출되도록 수정.
-- (해결) `index.html`이 프론트매터 시작(`---`)이 빠져 정적 파일로 처리되면서 페이지네이션 경고가 발생하고 제목이 비어 있었음 → 프론트매터를 복원하고 `title: Home`을 추가해 정상 페이지로 빌드되도록 수정.
-- (해결) 홈에서 “Latest Posts” 섹션을 제거하고 정적 소개/교육/연구/수상만 노출하도록 단순화. 페이지네이션도 비활성화(`paginate` 제거)해 불필요한 page2 생성 및 빈 페이지 노출을 방지.
-- (개선) 관련 글 영역을 한 행에 4개 카드가 가로로 배치되도록(`row-cols-4 flex-nowrap overflow-auto`) 수정해 가독성 향상.
-- (보호) 내부 점검용 `fix.md`가 공개 빌드에 포함되지 않도록 `_config.yml` `exclude`에 추가.
-- (메모) `bundle exec jekyll serve --future --detach`는 샌드박스 포트 제한(Errno::EPERM)으로 실행하지 못했고, 대신 `bundle exec jekyll build --future`로 빌드 검증 완료.
+- (해결) `_config.yml`에 `paginate` 키가 중복/빈 값으로 정의되어 페이지네이션 설정이 모호해지고 경고 가능성이 있었음 → 중복을 제거하고 주석 처리로 비활성화 의도를 명확히 정리.
+- (해결) `feed.xml`에서 `site.name` 사용 및 `dc` 네임스페이스 누락으로 RSS 제목 공백/유효성 문제가 있었음 → `site.title` 사용, `absolute_url` 링크 적용, `xmlns:dc` 추가 및 `dc:creator` 기본값 설정.
+- (해결) `pinhole camera model` 글의 이미지 경로가 `./assets`로 되어 있어 `/posts/.../assets/...`로 잘못 연결될 수 있었음 → `/assets/...` 절대 경로로 수정.
+- (해결) `_posts` 파일명에 공백/대문자와 날짜 불일치가 있어 관리 및 링크 안정성에 문제 소지가 있었음 → 하이픈 기반 소문자 파일명으로 정리하고 날짜를 실제 포스트 날짜에 맞춤.
+  - `2025-01-10-pinhole camera model.md` → `2026-01-10-pinhole-camera-model.md`
+  - `2025-06-25-award ksbe.md` → `2025-06-25-award-ksbe.md`
+  - `2025-12-26-Comparative Study on the Performance of NeRF and 3DGS based models.md` → `2025-12-26-comparative-study-on-the-performance-of-nerf-and-3dgs-based-models.md`
+  - `2026-01-03-Segment Anything.md` → `2026-01-03-segment-anything.md`
+  - `2026-01-04-Attention is all you need.md` → `2026-01-04-attention-is-all-you-need.md`
+  - `2026-01-10-About paper seminar.md` → `2026-01-10-about-paper-seminar.md`
 
 추가로 확인하면 좋은 사항
-- Award/Publication용 레이아웃은 의도적으로 홈으로 리다이렉트하고 있으므로 그대로 유지했습니다.
+- 샘플 글(`2025-12-24-notice-sample.md`)이 실제 공개에 불필요하다면 삭제하거나 `_drafts`로 이동을 고려.
+- 미사용 가능성이 있는 이미지 폴더(`assets/img/Paper-Review/Segment Any 3D Gaussians`)는 필요 시 정리해 용량/빌드 시간을 줄일 수 있음.

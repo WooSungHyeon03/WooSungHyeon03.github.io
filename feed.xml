@@ -2,18 +2,27 @@
 layout: none
 ---
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>{{ site.name | xml_escape }}</title>
+    <title>{{ site.title | xml_escape }}</title>
     <description>{{ site.description | xml_escape }}</description>
-    <link>{{ site.url }}</link>
-    <atom:link href="{{ site.url }}/feed.xml" rel="self" type="application/rss+xml" />
+    <link>{{ "/" | absolute_url }}</link>
+    <atom:link href="{{ "/feed.xml" | absolute_url }}" rel="self" type="application/rss+xml" />
 	<lastBuildDate>{% for post in site.posts limit:1 %}{{ post.date | date_to_rfc822 }}{% endfor %}</lastBuildDate>
 	{% for post in site.posts limit:10 %}
 	<item>
 		<title>{{ post.title | xml_escape }}</title>
-        {% if post.author.name %}
-            <dc:creator>{{ post.author.name | xml_escape }}</dc:creator>
+        {% if post.author %}
+            {% if post.author.name %}
+                {% assign creator = post.author.name %}
+            {% else %}
+                {% assign creator = post.author %}
+            {% endif %}
+        {% else %}
+            {% assign creator = site.social.name %}
+        {% endif %}
+        {% if creator %}
+            <dc:creator>{{ creator | xml_escape }}</dc:creator>
         {% endif %}
         {% if post.excerpt %}
             <description>{{ post.excerpt | xml_escape }}</description>
@@ -21,8 +30,8 @@ layout: none
             <description>{{ post.content | xml_escape }}</description>
         {% endif %}
         <pubDate>{{ post.date | date_to_rfc822 }}</pubDate>
-        <link>{{ site.url }}{{ post.url }}</link>
-        <guid isPermaLink="true">{{ site.url }}{{ post.url }}</guid>
+        <link>{{ post.url | absolute_url }}</link>
+        <guid isPermaLink="true">{{ post.url | absolute_url }}</guid>
       </item>
     {% endfor %}
   </channel>
