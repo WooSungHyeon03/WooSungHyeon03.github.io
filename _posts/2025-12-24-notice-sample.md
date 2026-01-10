@@ -2,7 +2,7 @@
 title: "[Notice] Welcome to my blog"
 date: 2025-12-24 10:00:00 +0900
 categories: [Notice]
-tags: [notice]
+tags: [Notice]
 ---
 
 안녕하세요👋  

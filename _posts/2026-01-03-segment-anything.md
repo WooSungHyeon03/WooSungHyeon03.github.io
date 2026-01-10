@@ -2,7 +2,7 @@
 title: "[Paper Review] Segment Anything"
 date: 2026-01-03 18:00:00 +0900
 categories: [Paper Review]
-tags: [Paper Review]
+tags: [Paper Review, Computer Vision]
 ---
 Author: [Alexander Kirillov](https://arxiv.org/search/cs?searchtype=author&query=Kirillov,+A), [Eric Mintun](https://arxiv.org/search/cs?searchtype=author&query=Mintun,+E), [Nikhila Ravi](https://arxiv.org/search/cs?searchtype=author&query=Ravi,+N), [Hanzi Mao](https://arxiv.org/search/cs?searchtype=author&query=Mao,+H), [Chloe Rolland](https://arxiv.org/search/cs?searchtype=author&query=Rolland,+C), [Laura Gustafson](https://arxiv.org/search/cs?searchtype=author&query=Gustafson,+L), [Tete Xiao](https://arxiv.org/search/cs?searchtype=author&query=Xiao,+T), [Spencer Whitehead](https://arxiv.org/search/cs?searchtype=author&query=Whitehead,+S), [Alexander C. Berg](https://arxiv.org/search/cs?searchtype=author&query=Berg,+A+C), [Wan-Yen Lo](https://arxiv.org/search/cs?searchtype=author&query=Lo,+W), [Piotr Dollár](https://arxiv.org/search/cs?searchtype=author&query=Doll%C3%A1r,+P), [Ross Girshick](https://arxiv.org/search/cs?searchtype=author&query=Girshick,+R)
 

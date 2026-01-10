@@ -2,7 +2,7 @@
 title: "[Study] pinhole camera model"
 date: 2026-01-10 18:00:00 +0900
 categories: [Study]
-tags: [Study,3D Vision]
+tags: [Study,Computer Vision]
 ---
 
  ![Figure 1](/assets/img/Study/pinhole-camera-model/Figure1.webp)

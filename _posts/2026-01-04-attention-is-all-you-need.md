@@ -1,8 +1,8 @@
 ---
 title: "[Paper Review] Attention Is All You Need"
 date: "2026-01-04 18:00:00 +0900"
-categories: ["Paper Review"]
-tags: ["Paper Review"]
+categories: [Paper Review]
+tags: [Paper Review, LLM]
 math: true
 ---
 
