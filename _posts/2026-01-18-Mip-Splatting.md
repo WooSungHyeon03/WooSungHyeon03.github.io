@@ -16,7 +16,7 @@ Author: [Zehao Yu](https://arxiv.org/search/cs?searchtype=author&query=Yu,+Z), [
 
 ---
 
-![Figure 1](\assets\img\Paper-Review\Mip-Splatting\Figure1.webp)
+![Figure 1](/assets/img/Paper-Review/Mip-Splatting/Figure1.webp)
 
 3DGS는 최적화 이후 low-pass filtering을 위해 2D dilation operation을 수행하게 됩니다. 하지만 이 과정 때문에 훈련 뷰보다 확대하거나 축소 했을 때 artifact가 생기게 됩니다. 축소 시 screen에 투영된 2D Gaussian의 크기가 줄어들게 되며 이때 동일한 dilation을 적용하면 dilation artifact가 발생합니다. 반대로 확대 시 2D Gaussian의 크기가 커짐에도 동일한 dilation이 적용되어 erosion이 발생하여 Gaussian 사이에 잘못된 간격이 생기는 erosion artifact가 발생합니다.
 
@@ -87,7 +87,7 @@ $$
 
 $$N$$은 전체 이미지 수이며 $$\mathbb{1}_n(p_k)$$는 프리미티브의 가시성을 평가하는 indicator 함수입니다. Gaussian의 중심 $$p_k$$가 $$n$$번째 camera의 view frustum에 위치할 경우 1이 됩니다. 직관적으로 해당 프리머티브를 재구성할 수 있는 카메라가 적어도 하나 존재하도록 sampling rate을 선택합니다. 이 과정은 매 $$m$$ =100 iter마다 프리머티브의 최대 sampling rate을 다시 계산합니다. 아래 그림은 N=5일때 예시입니다.
 
-![Figure 3](\assets\img\Paper-Review\Mip-Splatting\Figure3.webp)
+![Figure 3](/assets/img/Paper-Review/Mip-Splatting/Figure3.webp)
 
 **3D Smoothing:** 최대 sampling rate  $$\hat{\nu}_k$$가 주어지면 최대 주파수를 제한합니다. 이는 스크린 공간에 투영하기 전에 각 프리머티브에 Gaussian low-pass filter $$\mathcal{G}_{\text{low}}$$를 적용함으로써 달성할 수 있습니다.
 
@@ -113,7 +113,7 @@ $$
 
 $$s$$는 스크린공간에서 단일 픽셀을 덮도록 선택됩니다. Mip filter가 EWA filter와 유사하지만 기저 원리는 다릅니다. Mip filter는 이미지 프로세스의 box filter를 복제하도록 설계되어 단일 픽셀의 정확한 근사를 목표로 합니다. 반면 EWA 필터의 역할은 주파수 신호의 대역폭을 제한하는 것이며, 필터의 크기는 경험적으로 선택됩니다. EWA논문은 단위 공분산 행렬을 권장하여 스크린에서 3x3pixel 영역을 차지하게 합니다. 하지만 이러한 접근 방식은 아래 실험 결과에서 보여주듯이 축소할 때 지나치게 smoothing 됩니다.
 
-![Figure 2](\assets\img\Paper-Review\Mip-Splatting\Figure2.webp)
+![Figure 2](/assets/img/Paper-Review/Mip-Splatting/Figure2.webp)
 
 ### 6. Experiments
 
@@ -123,17 +123,17 @@ $$s$$는 스크린공간에서 단일 픽셀을 덮도록 선택됩니다. Mip f
 
 2D Mip filter의 분산을 단일 픽셀에 근사하도록 0.1로 선택하고, 3D smoothing filter의 분산을 0.2로 선택하여, 3DGS의 확장을 EWA filter로 대체한 3DGS+EWA 및 3DGS와의 공정한 비교를 위해 총합을 0.3으로 설정했습니다.
 
-![Table 1](\assets\img\Paper-Review\Mip-Splatting\Table1.webp)
+![Table 1](/assets/img/Paper-Review/Mip-Splatting/Table1.webp)
 
-![Figure 4](\assets\img\Paper-Review\Mip-Splatting\Figure4.webp)
+![Figure 4](/assets/img/Paper-Review/Mip-Splatting/Figure4.webp)
 
-![Table 2](\assets\img\Paper-Review\Mip-Splatting\Table2.webp)
+![Table 2](/assets/img/Paper-Review/Mip-Splatting/Table2.webp)
 
-![Figure 5](\assets\img\Paper-Review\Mip-Splatting\Figure5.webp)
+![Figure 5](/assets/img/Paper-Review/Mip-Splatting/Figure5.webp)
 
-![Table 3](\assets\img\Paper-Review\Mip-Splatting\Table3.webp)
+![Table 3](/assets/img/Paper-Review/Mip-Splatting/Table3.webp)
 
-![Table 4](\assets\img\Paper-Review\Mip-Splatting\Table4.webp)
+![Table 4](/assets/img/Paper-Review/Mip-Splatting/Table4.webp)
 
 #### 6.4. Limitations
 
