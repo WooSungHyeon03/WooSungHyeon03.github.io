@@ -8,7 +8,7 @@ math: true
 
 Author: [Zehao Yu](https://arxiv.org/search/cs?searchtype=author&query=Yu,+Z), [Anpei Chen](https://arxiv.org/search/cs?searchtype=author&query=Chen,+A), [Binbin Huang](https://arxiv.org/search/cs?searchtype=author&query=Huang,+B), [Torsten Sattler](https://arxiv.org/search/cs?searchtype=author&query=Sattler,+T), [Andreas Geiger](https://arxiv.org/search/cs?searchtype=author&query=Geiger,+A)
 
-[[github]](https://github.com/autonomousvision/mip-splatting) [[page]]() [[paper]](https://arxiv.org/abs/2311.16493) [[Online Viewer]](https://niujinshuchong.github.io/mip-splatting-demo/)
+[[github]](https://github.com/autonomousvision/mip-splatting) [[page]](https://niujinshuchong.github.io/mip-splatting/) [[paper]](https://arxiv.org/abs/2311.16493) [[Online Viewer]](https://niujinshuchong.github.io/mip-splatting-demo/)
 
 
 
